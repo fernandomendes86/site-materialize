@@ -14,11 +14,11 @@
     <div id="header">
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">LOGO</a>
+          <%= link_to "LOGO", root_path, class: "brand-logo" %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Index</a></li>
-            <li><a href="badges.html">About</a></li>
-            <li><a href="collapsible.html">Contact</a></li>
+            <li><%= link_to "Index", root_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
           </ul>
         </div>
       </nav>
