@@ -15,4 +15,4 @@ ActiveStorage.start()
 
 require("jquery")
 require("materialize-css")
-import 'material-icons/iconfont/material-icons.css';
+import "material-icons/iconfont/material-icons.scss"
