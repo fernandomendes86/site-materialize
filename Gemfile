@@ -9,9 +9,6 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 #postgresql
 #gem 'pg'
 
-# erro rake task heroku
-gem 'rack-timeout', '0.3.2'
-
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

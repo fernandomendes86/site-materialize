@@ -123,7 +123,6 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rack-timeout (0.3.2)
     rails (6.1.4.6)
       actioncable (= 6.1.4.6)
       actionmailbox (= 6.1.4.6)
@@ -220,7 +219,6 @@ DEPENDENCIES
   materialize-sass (~> 1.0.0)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
-  rack-timeout (= 0.3.2)
   rails (~> 6.1.4, >= 6.1.4.4)
   sass-rails (>= 6)
   selenium-webdriver
@@ -235,4 +233,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.1.4
+   2.3.7
