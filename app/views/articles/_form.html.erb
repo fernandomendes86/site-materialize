@@ -13,23 +13,28 @@
 
   <div class="row">
     <div class="input-field col s6">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+      <%= form.label :title, class: "validate" %>
+      <%= form.text_field :title, class: "validate" %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s6">
-      <%= form.label :description %>
-      <%= form.text_field :description %>
+      <%= form.label :description, class: "validate" %>
+      <%= form.text_field :description, class: "validate" %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s6">
     <%#= form.submit %>
-    <%= link_to 'Voltar', articles_path, class: "waves-effect waves-light btn"%> | 
-    <button type="submit" class="waves-effect waves-light btn">Criar</button>
+    <%= link_to 'Back', articles_path, class: "waves-effect waves-light btn" %>
+    <button type="submit" class="waves-effect waves-light btn green">Salvar</button>
     </div>
-  </div>
+  </div>      
   
 <% end %>
+<script>
+  $(document).ready(function() {
+    M.updateTextFields();
+  });
+</script>
