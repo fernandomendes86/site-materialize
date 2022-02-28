@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    #console
     @articles = Article.all
   end
 
