@@ -26,7 +26,8 @@ class Article < ApplicationRecord
       itens = article.virtual_hash # gera uma vez, pois está aleatório
       if itens.present?
         itens.values.as_json.each do |item|
-          puts "Id: #{article.id} - Title: #{article.title} - Item: #{item["99"]}"
+          #puts "Id: #{article.id} - Title: #{article.title} - Item: #{item["99"]}"
+          puts "Id: #{article.id} - Title: #{article.title} - Item: #{item.values[0] || "Nada"}"
         end
       else
         puts "Id: #{article.id} - Title: #{article.title} - Item: Nil ou '' ou {} }"
