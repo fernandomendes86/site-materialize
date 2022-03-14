@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   validates :description, presence: true, length: {maximum: 200}
   
   def include_description2
-    self.description2 = {"123"=> {"0"=> {"99"=> "10"}, "1"=> {"99"=> "20"}, "2"=> {"99"=> "40" } } } 
+    self.description2 = {"123"=> {"0"=> {"99"=> ""}}} 
     #self.description2 = {"123"=> {"0"=> {"99"=> "10"}, "1"=> {"99"=> "20"} } }  
   end
 
@@ -56,6 +56,19 @@ class Article < ApplicationRecord
       end 
     end  
     return b
+  end
+
+  def self.por_itens2
+    datas =  all.select(:id).select('description2')
+    datas.each do |resource|
+      if resource.description2.present? && resource.description2.match(/=>/)
+        eval(resource.description2)['123'].values.each do |i|
+          p "#{resource.id} - #{i["99"]}"
+        end
+      else
+        p "#{resource.id} - #{resource.description2}"
+      end
+    end  
   end
 
 end
