@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
 
-  before_save :include_description2
+  #before_save :include_description2
 
   validates :title, presence: :true, length: { minimum: 3, maximum: 100}
   validates :description, presence: true, length: {maximum: 200}
@@ -10,7 +10,7 @@ class Article < ApplicationRecord
     #self.description2 = {"123"=> {"0"=> {"99"=> "10"}, "1"=> {"99"=> "20"} } }  
   end
 
-  def virtual_hash
+  def virtual_hash2
     [ 
       "",
       [],
@@ -20,6 +20,10 @@ class Article < ApplicationRecord
       {"0": {"99": "vazio"} },
       {"0": {"99": "10"}, "1": {"99": "20"}, "2": {"99": "40"} } 
     ].sample
+  end
+
+  def self.virtual_hash2
+    {"a" => "10", "b" => "20"}
   end
 
 
