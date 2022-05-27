@@ -4,6 +4,10 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @articles, only: [:id, :title, :description] }
+    end
   end
 
   # GET /articles/1 or /articles/1.json
