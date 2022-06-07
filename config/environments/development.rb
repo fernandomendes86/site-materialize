@@ -1,7 +1,8 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-
   config.web_console.whitelisted_ips = '10.0.2.2'
 
   # Settings specified here will take precedence over those in config/application.rb.
