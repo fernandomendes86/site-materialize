@@ -1,0 +1,9 @@
+'pt-BR':
+  activerecord:
+    models:
+      article: Artigo
+    attributes:
+      article:
+        id: Código
+        title: Título
+        description: Descrição
