@@ -1,7 +1,7 @@
-<p id="notice" class="green-text green-darken-2"><%= notice %></p>
-
+<%= render 'shared/message_success' %>
 <h1 class="center-align">List of Articles</h1>
-<div id="new-article" class="center-align">
+<div id="new-article">
+<br>
 <%= link_to new_article_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
   <i class="material-icons">add</i>
 <% end %>
@@ -10,13 +10,16 @@
 <div class="container">
   <% @articles.each do |article| %>  
     <div class="row">
-      <div class="col s12 m6 offset-m3">
+      <div class="col s12 m10 offset-m1">
         <div class="card">
           <div class="card-content">
             <span class="card-title"><%= article.title %></span>
-            <p><%= article.description %></p>
+            <p><%= article.description.truncate(10) %></p>
           </div>
           <div class="card-action center-align grey lighten-4">
+            <%= link_to article_path(article), class: "waves-effect waves-light btn" do %>
+              <i class="material-icons">pageview</i>
+            <% end %>
             <%= link_to edit_article_path(article), class: "waves-effect waves-light btn" do %>
               <i class="material-icons">edit</i>
             <% end %>
