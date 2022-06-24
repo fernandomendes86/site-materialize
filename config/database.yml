@@ -1,22 +1,22 @@
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ default: &default
+   adapter: postgresql
+   encoding: unicode
+   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  host: database
-  database: site-materialize_development
-  #username: <%= ENV.fetch("POSTGRES_USER") %>
-  #password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+# development:
+#   <<: *default
+#   host: database
+#   database: site-materialize_development
+#   username: <%= ENV.fetch("POSTGRES_USER") %>
+#   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
 
-test:
-  <<: *default
-  host: database
-  database: site-materialize_test
-  #username: <%= ENV.fetch("POSTGRES_USER") %>
-  #password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+# test:
+#   <<: *default
+#   host: database
+#   database: site-materialize_test
+#   username: <%= ENV.fetch("POSTGRES_USER") %>
+#   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
 
 production:
   <<: *default
