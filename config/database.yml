@@ -8,15 +8,15 @@ development:
   <<: *default
   host: database
   database: site-materialize_development
-  username: <%= ENV.fetch("POSTGRES_USER") %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  #username: <%= ENV.fetch("POSTGRES_USER") %>
+  #password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
 
 test:
   <<: *default
   host: database
   database: site-materialize_test
-  username: <%= ENV.fetch("POSTGRES_USER") %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  #username: <%= ENV.fetch("POSTGRES_USER") %>
+  #password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
 
 production:
   <<: *default
