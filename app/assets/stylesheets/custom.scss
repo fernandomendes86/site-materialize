@@ -1,0 +1,23 @@
+.brand-logo {
+  margin-left: 5px;
+}
+
+#main {
+  margin: 12px;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+div#new-article {
+  margin-left:300px;
+}
+
+    

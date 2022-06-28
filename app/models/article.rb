@@ -1,11 +1,6 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
-
-  before_save :include_description2
-
-  validates :title, :description, presence: :true
-
-  def include_description2
-    self.description2 = self.description.capitalize  
-  end
-
+  validates :title, presence: true, length: { minimum: 3, maximum: 100 }
+  validates :description, presence: true, length: { maximum: 200 }
 end

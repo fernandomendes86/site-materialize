@@ -1,7 +1,8 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   resources :articles
-  root 'page#index'
+  root 'page#home'
 
   get 'about', to: 'page#about'
   get 'contact', to: 'page#contact'
