@@ -1,7 +1,6 @@
-<div>
-  <% if notice %>
-    <%= javascript_tag do %>
-       M.toast({html: '<%= notice %>'})
-    <% end %>
+<% if notice %>
+  <%= javascript_tag do %>
+      M.toast({html: '<%= notice %>'})
   <% end %>
-<div>
+<% end %>
+
