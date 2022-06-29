@@ -1,1 +1,7 @@
-<div id="notice" class="green-text green-darken-2"><%= notice %></div>
+<div>
+  <% if notice %>
+    <%= javascript_tag do %>
+       M.toast({html: '<%= notice %>'})
+    <% end %>
+  <% end %>
+<div>

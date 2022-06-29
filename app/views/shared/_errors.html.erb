@@ -1,10 +1,12 @@
 <% if errors.any? %>
-  <h5><%= t 'message_error' %></h5>
-    <div class="red-text text-darken-4">
-      <ul>
-        <% errors.each do |error| %>
-          <li><%= "- #{error.full_message} "%></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="red-text text-darken-4">
+  <h6><%= t 'message_error' %>:</h6> 
+  <blockquote>
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= "- #{error.full_message} "%></li>
+      <% end %>
+    </ul>
+  </blockquote>
+</div>
+<% end %>
