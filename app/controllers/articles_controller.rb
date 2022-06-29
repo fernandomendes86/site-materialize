@@ -26,7 +26,8 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-
+    # FIXME: remove default user
+    @article.user = set_default_user
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: 'Article was successfully created.' }
@@ -40,6 +41,8 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    # FIXME: remove default user
+    @article.user = set_default_user
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: 'Article was successfully updated.' }
@@ -71,5 +74,9 @@ class ArticlesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def set_default_user
+    User.find_or_create_by(username: 'teste', email: 'teste@teste.com')
   end
 end
