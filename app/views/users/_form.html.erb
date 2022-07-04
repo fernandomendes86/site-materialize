@@ -1,0 +1,42 @@
+<%= form_with(model: user) do |form| %>
+  <%= render 'shared/message_success' %>
+  <%= render 'shared/errors', errors: user.errors %>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :username, class: "validate" %>
+      <%= form.text_field :username, class: "validate" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :email, class: "validate" %>
+      <%= form.email_field :email, class: "validate" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :password, class: "validate" %>
+      <%= form.password_field :password, class: "validate" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :password_confirmation, class: "validate" %>
+      <%= form.password_field :password_confirmation, class: "validate" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12 center">
+      <%= form.submit "Enviar", class: "waves-effect waves-light btn green" %>
+    </div>
+  </div>      
+  
+<% end %>
+<script>
+  $(document).ready(function() {
+    M.updateTextFields();
+  });
+</script>
