@@ -8,6 +8,8 @@ services:
       - db_data:/var/lib/postgresql/data
       
   web:
+    stdin_open: true
+    tty: true
     build:
       context: .
       dockerfile: Dockerfile
