@@ -4,10 +4,12 @@
       <div class="col s12 m10 offset-m1">
         <div class="card">
           <div class="card-content">
-            <span class="card-title"><%= article.title %></span>
+            <span class="card-title">
+              <%= link_to "#{article.title}", article %>
+            </span>
             <p><%= article.description.truncate(10) %></p>
             <br><br>
-            <i>por <b><%= article.user.try(:username) || "Anonymous" %></b> em <%= time_ago_in_words(article.updated_at) %></i>
+            <i>por <b><%= user_page(article) %></b> em <%= time_ago_in_words(article.updated_at) %></i>
           </div>
           <div class="card-action center-align grey lighten-4">
             <%= link_to article_path(article), class: "waves-effect waves-light btn" do %>

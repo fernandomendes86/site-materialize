@@ -12,5 +12,7 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
 
+  scope :order_by_name, -> { order(:username) }
+
   has_secure_password
 end

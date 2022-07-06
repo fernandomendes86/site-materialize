@@ -1,7 +1,16 @@
+<%= render 'shared/message_success' %>
 <div class="container">
-  <h4 class="center-align">
-    <%= avatar_image %><br> 
-    <%= @user.username.capitalize %>'s profile<br><br>
-  </h4>
-  <%= render 'articles/article' %>
+  <div class="center-align">
+    <p>
+      <%= avatar_image(@user) %>
+      <h5>
+        <%= @user.username.capitalize %>'s profile
+        <%= link_to edit_user_path(@user) do %>
+          <i class="tiny material-icons">edit</i>
+        <% end %>
+      </h5>
+    </p> 
+    <h3>Articles</h3>
+    <%= render 'articles/article' %>
+  </div>
 </div>

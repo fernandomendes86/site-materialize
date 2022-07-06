@@ -3,6 +3,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show]
 
+  def index
+    @users = User.order_by_name
+  end
   def new
     @user = User.new
   end
@@ -16,7 +19,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to articles_path, notice: "User (#{@user.username}) was succesfully updated." }
+        format.html { redirect_to @user, notice: "User (#{@user.username}) was succesfully updated." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to articles_path, notice: "User (#{@user.username}) was succesfully created." }
+        format.html { redirect_to @user, notice: "User (#{@user.username}) was succesfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
