@@ -1,9 +1,7 @@
 <div class="container">
   <h4 class="center-align">
-    <%= @user.username.capitalize %>'s profile<br>
-    <%= avatar_image %>
+    <%= avatar_image %><br> 
+    <%= @user.username.capitalize %>'s profile<br><br>
   </h4>
-  <div class="container-center">
-    <%= render 'articles/article' %>
-  </div>
+  <%= render 'articles/article' %>
 </div>
