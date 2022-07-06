@@ -1,0 +1,27 @@
+<div class="container">
+  <% @articles.each do |article| %>  
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><%= article.title %></span>
+            <p><%= article.description.truncate(10) %></p>
+            <br><br>
+            <i>por <b><%= article.user.try(:username) || "Anonymous" %></b> em <%= time_ago_in_words(article.updated_at) %></i>
+          </div>
+          <div class="card-action center-align grey lighten-4">
+            <%= link_to article_path(article), class: "waves-effect waves-light btn" do %>
+              <i class="material-icons">pageview</i>
+            <% end %>
+            <%= link_to edit_article_path(article), class: "waves-effect waves-light btn" do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+            <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red" do %>
+              <i class="material-icons">delete</i> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>              
+  <% end %>
+</div>
