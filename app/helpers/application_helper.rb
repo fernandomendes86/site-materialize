@@ -6,15 +6,15 @@ module ApplicationHelper
   end
 
   def avatar_image(user)
-    faker_image = Faker::Avatar.image(slug: user.username, size: "100x100")
-    image_tag(faker_image, alt: user.username, class: "img-rounded")
+    faker_image = Faker::Avatar.image(slug: user.username, size: '100x100')
+    image_tag(faker_image, alt: user.username, class: 'img-rounded')
   end
 
   def user_page(article)
     if article.user.try(:username)
-      link_to("#{article.user.username}", article.user)
+      link_to(article.user.username.to_s, article.user)
     else
-      "Anonymous"
+      'Anonymous'
     end
   end
 end

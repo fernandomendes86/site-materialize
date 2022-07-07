@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :articles
+
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        length: { minimum: 3, maximum: 10 }
@@ -13,6 +14,8 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   scope :order_by_name, -> { order(:username) }
+
+  paginates_per 5
 
   has_secure_password
 end

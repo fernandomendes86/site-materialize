@@ -4,14 +4,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show]
 
   def index
-    @users = User.order_by_name
+    @users = User.order_by_name.page(params[:page])
   end
+
   def new
     @user = User.new
   end
 
   def show
-    @articles = @user.articles
+    @articles = @user.articles.page(params[:page])
   end
 
   def edit; end

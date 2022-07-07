@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page])
     respond_to do |format|
       format.html
       format.json { render json: @articles, only: %i[id title description] }
