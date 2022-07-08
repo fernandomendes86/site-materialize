@@ -8,28 +8,29 @@
         <li><%= link_to "Bloggers", users_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact", contact_path %></li>
-        <li>
-          <%= link_to login_path, class: "btn waves-effect waves-light green lighten-1" do %>
-            SIGN IN <i class="material-icons">send</i>
-          <% end %>
-        </li>
-        <li> 
-          <%= link_to signup_path, class: "btn waves-effect waves-light green lighten-1" do %>
-            SIGN UP <i class="material-icons right">send</i>         
-          <% end %>
-        </li>
-        <% if session[:user_id] %>
+        <% unless loggined_in? %>
           <li>
-            <%= link_to user_path(session[:user_id]) do %>
-              <i class="material-icons">account_circle</i>         
+            <%= link_to login_path, class: "btn-small waves-effect waves-light green darken-1" do %>
+              SIGN IN <i class="material-icons">send</i>
+            <% end %>
+          </li>
+          <li> 
+            <%= link_to signup_path, class: "btn-small waves-effect waves-light green darken-1" do %>
+              SIGN UP <i class="material-icons right">send</i>         
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to user_path(session[:user_id]), title: current_user.try(:username).to_s do %>
+              <i class="material-icons">account_circle</i>        
             <% end %>
           </li>
           <li>
-            <%= link_to logout_path, method: :delete do %>
+            <%= link_to logout_path, method: :delete, title: 'Exit' do %>
               <i class="material-icons">exit_to_app</i>         
             <% end %>
           </li>
-         <% end %>
+        <% end %>
       </ul>
       </ul>
     </div>
