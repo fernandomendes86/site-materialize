@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-
   helper_method :current_user, :loggined_in?
 
   def current_user
@@ -11,5 +10,4 @@ class ApplicationController < ActionController::Base
   def loggined_in?
     !!current_user
   end
-
 end

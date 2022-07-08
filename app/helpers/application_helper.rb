@@ -17,5 +17,4 @@ module ApplicationHelper
       'Anonymous'
     end
   end
-  
 end
