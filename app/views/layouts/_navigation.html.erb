@@ -8,11 +8,28 @@
         <li><%= link_to "Bloggers", users_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact", contact_path %></li>
+        <li>
+          <%= link_to login_path, class: "btn waves-effect waves-light green lighten-1" do %>
+            LOGIN <i class="material-icons">send</i>
+          <% end %>
+        </li>
         <li> 
-          <%= link_to signup_path, class: "btn waves-effect waves-light green" do %>
+          <%= link_to signup_path, class: "btn waves-effect waves-light green lighten-1" do %>
             SIGN UP <i class="material-icons right">send</i>         
           <% end %>
         </li>
+        <% if session[:user_id] %>
+          <li>
+            <%= link_to user_path(session[:user_id]) do %>
+              <i class="material-icons">account_circle</i>         
+            <% end %>
+          </li>
+          <li>
+            <%= link_to logout_path, method: :delete do %>
+              <i class="material-icons">exit_to_app</i>         
+            <% end %>
+          </li>
+         <% end %>
       </ul>
       </ul>
     </div>
