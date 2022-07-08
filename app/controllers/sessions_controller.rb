@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user
     else
-      flash[:notice] = "Login error"
+      flash.now[:notice] = "Login error"
       render 'new'
     end
 

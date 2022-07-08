@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     # FIXME: remove default user
-    @article.user = set_default_user
+    @article.user = current_user
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: 'Article was successfully created.' }
