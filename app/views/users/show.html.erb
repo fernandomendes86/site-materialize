@@ -5,8 +5,10 @@
       <%= avatar_image(@user) %>
       <h5>
         <%= @user.username.capitalize %>'s profile
-        <%= link_to edit_user_path(@user) do %>
-          <i class="tiny material-icons">edit</i>
+        <% if loggined_in? && @user == current_user %>
+          <%= link_to edit_user_path(@user) do %>
+            <i class="tiny material-icons">edit</i>
+          <% end %>
         <% end %>
       </h5>
     </p> 

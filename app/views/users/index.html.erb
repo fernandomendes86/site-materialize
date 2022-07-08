@@ -18,8 +18,10 @@
             <%= link_to user_path(user), class: "waves-effect waves-light btn" do %>
               <i class="material-icons">pageview</i>
             <% end %>
-            <%= link_to edit_user_path(user), class: "waves-effect waves-light btn" do %>
-              <i class="material-icons">edit</i>
+            <% if loggined_in? && user == current_user %>
+              <%= link_to edit_user_path(user), class: "waves-effect waves-light btn" do %>
+                <i class="material-icons">edit</i>
+              <% end %>
             <% end %>
           </div>
         </div>

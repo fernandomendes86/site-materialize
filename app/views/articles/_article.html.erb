@@ -14,11 +14,13 @@
           <%= link_to article_path(article), class: "waves-effect waves-light btn" do %>
             <i class="material-icons">pageview</i>
           <% end %>
-          <%= link_to edit_article_path(article), class: "waves-effect waves-light btn" do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red" do %>
-            <i class="material-icons">delete</i> 
+          <% if loggined_in? && article.user == current_user %>
+            <%= link_to edit_article_path(article), class: "waves-effect waves-light btn" do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+            <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red" do %>
+              <i class="material-icons">delete</i> 
+            <% end %>
           <% end %>
         </div>
       </div>
