@@ -1,8 +1,9 @@
 <%= render 'shared/message_success' %>
 <h1 class="center-align">List of Articles
-
-<%= link_to new_article_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
-  <i class="material-icons">add</i>
+<% if loggined_in? %>
+  <%= link_to new_article_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
+    <i class="material-icons">add</i>
+  <% end %>
 <% end %>
 </h1>
 
