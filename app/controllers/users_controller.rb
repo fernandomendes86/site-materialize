@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:notice] = 'Account and all associated articles successfully deleted'
-    reset_session
+    @user == current_user ? reset_session : redirect_to(users_path)
   end
 
   private
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    return unless set_user != current_user
+    return if (set_user == current_user) || current_user.admin?
 
     flash[:alert] = 'Access not allowed to your account!'
     redirect_to current_user

@@ -12,7 +12,7 @@
           <i>por <b><%= user_page(@article) %></b> em <%= time_ago_in_words(@article.updated_at) %></i>
         </div>
         <div class="card-action center-align grey lighten-4">
-          <% if loggined_in? && @article.user == current_user %>
+          <% if loggined_in? && (@article.user == current_user || current_user.admin?) %>
             <%= link_to edit_article_path(@article), class: "waves-effect waves-light btn" do %>
               <i class="material-icons">edit</i>
             <% end %>

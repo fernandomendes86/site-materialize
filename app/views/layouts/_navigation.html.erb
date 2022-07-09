@@ -21,6 +21,11 @@
           </li>
         <% else %>
           <li>
+            <b>
+            [ <%= current_user.try(:username).to_s.downcase %><%= "-Admin" if current_user.try(:admin) %> ]
+            </b>
+          </li>
+          <li>
             <%= link_to user_path(session[:user_id]), title: current_user.try(:username).to_s do %>
               <i class="material-icons">account_circle</i>        
             <% end %>

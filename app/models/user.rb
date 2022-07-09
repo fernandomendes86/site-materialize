@@ -11,6 +11,8 @@ class User < ApplicationRecord
                     length: { maximum: 105 },
                     format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  validates :password, length: { minimum: 6, maximum: 20 }, on: %i[create update]
+
   before_save { self.email = email.downcase }
 
   scope :order_by_name, -> { order(:username) }
