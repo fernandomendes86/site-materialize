@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit update show]
+  before_action :set_user, only: %i[edit update show destroy]
   before_action :require_user, only: %i[edit update]
-  before_action :require_same_user, only: %i[edit update]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
     @users = User.order_by_name.page(params[:page])
@@ -41,6 +41,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    flash[:notice] = 'Account and all associated articles successfully deleted'
+    reset_session
+  end
+
   private
 
   def set_user
@@ -52,9 +58,9 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if set_user != current_user
-      flash[:alert] = 'Access not allowed to your account!'
-      redirect_to current_user
-    end
+    return unless set_user != current_user
+
+    flash[:alert] = 'Access not allowed to your account!'
+    redirect_to current_user
   end
 end

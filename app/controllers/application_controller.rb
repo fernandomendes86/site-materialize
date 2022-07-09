@@ -12,9 +12,14 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless loggined_in?
-      flash[:alert] = 'You must be logged in!'
-      redirect_to root_path
-    end
+    return if loggined_in?
+
+    flash[:alert] = 'You must be logged in!'
+    redirect_to root_path
+  end
+
+  def reset_session
+    session[:user_id] = nil
+    redirect_to root_path
   end
 end

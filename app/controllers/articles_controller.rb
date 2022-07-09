@@ -77,9 +77,9 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != set_article.user
-      flash[:alert] = 'Access not allowed to your account!'
-      redirect_to set_article
-    end
+    return unless current_user != set_article.user
+
+    flash[:alert] = 'Access not allowed to your account!'
+    redirect_to set_article
   end
 end
