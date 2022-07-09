@@ -1,0 +1,8 @@
+<%= javascript_tag do %>
+  <% if notice %>  
+    M.toast({html: '<%= notice %>', classes: 'rounded green darken-2'})
+  <% elsif alert %>
+    M.toast({html: '<%= alert %>', classes: 'red darken-4'});
+  <% end %>
+<% end %>
+

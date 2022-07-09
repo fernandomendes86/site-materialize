@@ -2,6 +2,8 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show]
+  before_action :require_user, only: %i[edit update]
+  before_action :require_same_user, only: %i[edit update]
 
   def index
     @users = User.order_by_name.page(params[:page])
@@ -28,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
     respond_to do |format|
-      if user.save
-        session[:user_id] = user.id
-        format.html { redirect_to user, notice: "User (#{user.username}) was succesfully created." }
+      if @user.save
+        session[:user_id] = @user.id
+        format.html { redirect_to @user, notice: "User (#{@user.username}) was succesfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -47,5 +49,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def require_same_user
+    if set_user != current_user
+      flash[:alert] = 'Access not allowed to your account!'
+      redirect_to current_user
+    end
   end
 end

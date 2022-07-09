@@ -2,6 +2,8 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :require_user, except: %i[index show]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   # GET /articles or /articles.json
   def index
@@ -26,7 +28,6 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-    # FIXME: remove default user
     @article.user = current_user
     respond_to do |format|
       if @article.save
@@ -41,8 +42,7 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
-    # FIXME: remove default user
-    @article.user = set_default_user
+    @article.user = current_user
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: 'Article was successfully updated.' }
@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to current_user, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,7 +76,10 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :description)
   end
 
-  def set_default_user
-    User.find_or_create_by(username: 'teste', email: 'teste@teste.com')
+  def require_same_user
+    if current_user != set_article.user
+      flash[:alert] = 'Access not allowed to your account!'
+      redirect_to set_article
+    end
   end
 end
