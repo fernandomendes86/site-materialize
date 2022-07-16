@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   # post 'signup', to: 'users#signup'
   resources :users, except: :new
+  resources :categories, except: :destroy
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'login', to: 'sessions#new'

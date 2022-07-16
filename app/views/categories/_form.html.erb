@@ -1,0 +1,24 @@
+<%= form_with(model: category) do |form| %>
+  
+  <%= render 'shared/errors', errors: category.errors %>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <%= form.label :name, 'Category name', class: "validate" %>
+      <%= form.text_field :name, class: "validate" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+    <%#= form.submit %>
+    <%= link_to 'Back', categories_path, class: "waves-effect waves-light btn" %>
+    <button type="submit" class="waves-effect waves-light btn green">Salvar</button>
+    </div>
+  </div>      
+  
+<% end %>
+<script>
+  $(document).ready(function() {
+    M.updateTextFields();
+  });
+</script>
