@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :category_params, only: %i[create]
+  before_action :upload_params, only: %i[uploads]
 
   def index; end
 
@@ -12,6 +13,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
+      uploads
       flash[:notice] = 'Category created successfuly'
       redirect_to @category
     else
@@ -23,7 +25,20 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def uploads
+    uploaded_io = upload_params[:attachment]
+    return if uploaded_io.nil?
+
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+
   private
+
+  def upload_params
+    params.require(:category).permit(:attachment)
+  end
 
   def category_params
     params.require(:category).permit(:name)

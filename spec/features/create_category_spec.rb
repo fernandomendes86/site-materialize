@@ -21,7 +21,7 @@ RSpec.feature 'Create Category', type: :feature do
     fill_in('name', with: '')
     click_on('Salvar')
     find('div.red-text.text-darken-4')
-    #expect(page).to have_css('div.red-text.text-darken-4')
+    # expect(page).to have_css('div.red-text.text-darken-4')
     expect(page).to have_content('Dados inválidos')
   end
 end
