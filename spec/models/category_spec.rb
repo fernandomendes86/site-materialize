@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Category do
   let(:category) { Category.new(name: 'sports3') }
 
-  context 'when create Category' do
+  context 'When create Category' do
     it '.valid?' do
       expect(category.valid?).to be_truthy
     end
