@@ -10,6 +10,11 @@
   </div>
   <div class="row">
     <div class="input-field col s6">
+      <%= form.file_field :attachment %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
     <%#= form.submit %>
     <%= link_to 'Back', categories_path, class: "waves-effect waves-light btn" %>
     <button type="submit" class="waves-effect waves-light btn green">Salvar</button>
