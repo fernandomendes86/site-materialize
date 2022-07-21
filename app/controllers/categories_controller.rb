@@ -4,7 +4,9 @@ class CategoriesController < ApplicationController
   before_action :category_params, only: %i[create]
   before_action :upload_params, only: %i[uploads]
 
-  def index; end
+  def index
+    @categories = Category.order(:name).page(params[:page])
+  end
 
   def new
     @category = Category.new
