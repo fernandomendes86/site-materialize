@@ -1,3 +1,5 @@
 # SITE MATERIALIZE
-<https://site-materialize.herokuapp.com/>
+- Ruby
+- Rails
+- <https://site-materialize.herokuapp.com/>
 
