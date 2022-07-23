@@ -33,7 +33,7 @@ describe CategoriesController do
     it '.create - Should not create category if not admin' do
       expect do
         post :create, params: { category: { name: 'Musics' } }
-      end.to_not change(Category.count)
+      end.to_not(change { Category.count })
     end
 
     it '.show' do
