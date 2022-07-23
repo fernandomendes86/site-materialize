@@ -9,7 +9,7 @@
           <%= image_tag "/uploads/ruby-logo.png" %>
         </div>
         <div class="card-action center-align grey lighten-4">
-          <% if loggined_in? && (@category.user == current_user || current_user.admin?) %>
+          <% if loggined_in? && current_user.admin? %>
             <%= link_to edit_category_path(@category), class: "waves-effect waves-light btn" do %>
               <i class="material-icons">edit</i>
             <% end %>

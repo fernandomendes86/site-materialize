@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :category_params, only: %i[create]
+  before_action :require_admin, except: %i[index show]
   before_action :upload_params, only: %i[uploads]
 
   def index
@@ -44,5 +45,12 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_admin
+    return if loggined_in? && current_user.admin?
+
+    flash[:alert] = 'Only admins can perform that action'
+    redirect_to categories_path
   end
 end

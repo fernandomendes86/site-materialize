@@ -10,7 +10,7 @@
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 # IgnoredMethods: refine
 Metrics/BlockLength:
-  Max: 27
+  Max: 32
 
 # Offense count: 1
 # Configuration parameters: IgnoredMethods.

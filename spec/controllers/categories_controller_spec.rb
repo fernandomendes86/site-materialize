@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 describe CategoriesController do
-  before { @category = Category.create(name: 'Movies') }
+  before do
+    @category = Category.create(name: 'Movies')
+    @admin_user = User.create(username: 'rspec-admin', email: 'rspec-admin@test.com',
+                              password: 'rspec-admin', admin: true)
+  end
 
   context 'When create Categories' do
     it '.index' do
@@ -12,16 +16,24 @@ describe CategoriesController do
     end
 
     it '.new' do
+      sign_in_as(@admin_user)
       get :new
       should respond_with(:success)
     end
 
     it '.create' do
+      sign_in_as(@admin_user)
       expect do
         post :create, params: { category: { name: 'Musics' } }
       end.to change { Category.count }.by(1)
 
       should redirect_to(Category.last)
+    end
+
+    it '.create - Should not create category if not admin' do
+      expect do
+        post :create, params: { category: { name: 'Musics' } }
+      end.to_not change(Category.count)
     end
 
     it '.show' do
