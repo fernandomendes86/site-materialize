@@ -1,5 +1,11 @@
 <%#= render 'shared/message_center' %>
-<h1 class="center-align">List of Categories</h1>
+<h1 class="center-align">List of Categories
+  <% if loggined_in? %>
+    <%= link_to new_category_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
+      <i class="material-icons">add</i>
+    <% end %>
+  <% end %>
+</h1>
 <br>
 <div class="container">
   <% @categories.each do |category| %>  
@@ -16,11 +22,13 @@
             <%= link_to category_path(category), class: "waves-effect waves-light btn" do %>
               <i class="material-icons">pageview</i>
             <% end %>
-            <%= link_to edit_category_path(category), class: "waves-effect waves-light btn" do %>
-              <i class="material-icons">edit</i>
-            <% end %>
-            <%= link_to category_path(category), method: :delete,  data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red" do %>
-              <i class="material-icons">delete</i>
+            <% if loggined_in? && current_user&.admin? %>
+              <%= link_to edit_category_path(category), class: "waves-effect waves-light btn" do %>
+                <i class="material-icons">edit</i>
+              <% end %>
+              <%= link_to category_path(category), method: :delete,  data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red" do %>
+                <i class="material-icons">delete</i>
+              <% end %>
             <% end %>
           </div>
         </div>
