@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
+      uploads
       flash[:notice] = 'Category updated successfully'
       redirect_to @category
     else
