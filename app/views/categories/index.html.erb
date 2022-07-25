@@ -16,6 +16,7 @@
             <span class="card-title">
               <%= link_to "#{category.name}", category %>
             </span>
+            <p><i><%= pluralize(category.articles.length, "article", plural: "articles" ) %></i></p>
             <p><i>Joined: <%= time_ago_in_words(category.updated_at) %></i></p>
           </div>
           <div class="card-action center-align grey lighten-4">
@@ -25,9 +26,6 @@
             <% if loggined_in? && current_user&.admin? %>
               <%= link_to edit_category_path(category), class: "waves-effect waves-light btn" do %>
                 <i class="material-icons">edit</i>
-              <% end %>
-              <%= link_to category_path(category), method: :delete,  data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red" do %>
-                <i class="material-icons">delete</i>
               <% end %>
             <% end %>
           </div>
