@@ -9,7 +9,9 @@
           <span class="card-title"><%= @article.title %></span>
           <p><%= simple_format(@article.description) %></p>
           <br><br>
-          <i>por <b><%= user_page(@article) %></b> em <%= time_ago_in_words(@article.updated_at) %></i>
+          <%= render @article.categories %>
+          <br><br>
+          <i>por <b><%= user_page(@article) %></b> em <%= time_ago_in_words(@article.updated_at) %></i><br>
         </div>
         <div class="card-action center-align grey lighten-4">
           <% if loggined_in? && (@article.user == current_user || current_user.admin?) %>

@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :select_all_categories, only: %i[new create edit]
   before_action :require_user, except: %i[index show]
   before_action :require_same_user, only: %i[edit update destroy]
 
@@ -71,9 +72,13 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def select_all_categories
+    @categories = Category.all.select(:id, :name)
+  end
+
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def require_same_user

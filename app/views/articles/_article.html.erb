@@ -8,6 +8,8 @@
           </span>
           <p><%= article.description.truncate(10) %></p>
           <br><br>
+          <%= render article.categories %>
+          <br><br>
           <i>por <b><%= user_page(article) %></b> em <%= time_ago_in_words(article.updated_at) %></i>
         </div>
         <div class="card-action center-align grey lighten-4">
