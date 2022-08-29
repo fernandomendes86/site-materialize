@@ -5,7 +5,7 @@
       <%= avatar_image(@user) %><br>
       <h5><%= @user.username.capitalize %>'s profile</h5>
       <span>
-        <% if loggined_in? && (@user == current_user) || current_user.admin? %>
+        <% if loggined_in? && (@user == current_user || current_user.admin?) %>
           <%= link_to edit_user_path(@user), class: "waves-effect waves-light btn-small" do %>
             <i class="material-icons">edit</i>
           <% end %>
